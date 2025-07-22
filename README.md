@@ -2,4 +2,5 @@
 
 A Website for PTS Chemistry Class
 
-## Getting Started
+Visit Website- 
+https://srijen-raja.github.io/PTSChemWeb/
