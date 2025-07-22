@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
-// 1. Import the package with a prefix to permanently solve name conflicts.
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
+import 'package:ptschemistryclass/course_data.dart' as course_data_lib;
 
-class HomePage extends StatelessWidget {
+import 'courses_page.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _coursesKey = GlobalKey();
+
+  void _scrollToCourses() {
+    final context = _coursesKey.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +51,26 @@ class HomePage extends StatelessWidget {
       ),
     );
     var wid = MediaQuery.of(context).size.width;
+    var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white38,
         foregroundColor: Colors.black,
         elevation: 1.0,
         toolbarHeight: 70,
-        title: const Text(
-          'PTS Chemistry Class',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        title: Row(children: [
+          SizedBox(height: 50,width: 50,
+            child: Image.asset("images/icon.jpg"),),
+          SizedBox(width: 5,),
+          const Text(
+            'PTS Chemistry Class',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+        ]
         ),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset("images/icon.jpg"),
-        ),
-        actions: <Widget>[
+        actions: (hei<wid*0.9)?<Widget>[
           TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/courses'),
+            onPressed: _scrollToCourses,
             style: navLinkStyle,
             child: const Text('Courses'),
           ),
@@ -70,7 +100,7 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           ElevatedButton(
-            onPressed: () { /* Sign Up Logic */ },
+            onPressed: () => Navigator.pushNamed(context, '/login'),
             child: const Text('Sign Up'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
@@ -83,14 +113,56 @@ class HomePage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-        ],
+        ]:<Widget>[SizedBox.shrink()],
       ),
-      body: const CoursesPageContent(colossal: true,),
+      drawer: (hei*0.85>wid)?Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: const Text('Courses'),
+              // --- CHANGE 5: Also updated the drawer's tap behavior. ---
+              onTap: () {
+                Navigator.pop(context); // Close the drawer first
+                _scrollToCourses();
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Reviews'),
+              onTap: () => Navigator.pushNamed(context, '/reviews'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('About Me'),
+              onTap: () => Navigator.pushNamed(context, '/about'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Contact'),
+              onTap: () => Navigator.pushNamed(context, '/contact'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Sign Up'),
+              onTap: () => Navigator.pushNamed(context, '/login'),
+            ),
+          ],
+        ),
+      ):null,
+      body: CoursesPageContent(
+        controller: _scrollController,
+        coursesKey: _coursesKey,
+      ),
     );
   }
 }
 
-// The list of image URLs.
+// Your existing UI widgets remain unchanged.
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1588702547919-26089e690ecc?q=80&w=2070',
   'https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070',
@@ -108,11 +180,7 @@ class CourseBannerCarousel extends StatefulWidget {
 
 class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
   int _current = 0;
-
-  // --- THIS IS THE FIX ---
-  // The class is now named CarouselSliderController in this package version.
   final CarouselSliderController _controller = CarouselSliderController();
-  // -----------------------
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +196,7 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
           options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: true,
-            aspectRatio: 2.5,
+            aspectRatio: ((MediaQuery.of(context).size.height>MediaQuery.of(context).size.width*0.8)?1.5:2.8),
             viewportFraction: 0.9,
             onPageChanged: (index, reason) {
               setState(() {
@@ -151,7 +219,7 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
                   color: (Theme.of(context).brightness == Brightness.dark
                       ? Colors.white
                       : Colors.black)
-                      .withOpacity(_current == entry.key ? 0.9 : 0.4),
+                      .withValues(alpha:  _current == entry.key ? 0.9 : 0.4),
                 ),
               ),
             );
@@ -162,7 +230,6 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
   }
 }
 
-// 3. Definition order fixed: CourseCard is defined before it's used.
 class CourseCard extends StatefulWidget {
   final String title;
   final String description;
@@ -181,25 +248,36 @@ class _CourseCardState extends State<CourseCard> {
     final double elevation = _isHovered ? 16.0 : 4.0;
     final double scale = _isHovered ? 1.03 : 1.0;
     final Color shadowColor = _isHovered ? Theme.of(context).primaryColor.withValues(alpha: 0.5) : Colors.black;
-
+    var wid = MediaQuery.of(context).size.width;
+    var hei = MediaQuery.of(context).size.height;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: GestureDetector(
         onTap: () {
-          //print('Tapped on ${widget.title}');
+          if(course_data_lib.courseData.any((course) => course.title == widget.title)){
+            Navigator.push(context,MaterialPageRoute(
+              builder: (context) => CoursesPage(title: widget.title),
+            ),
+          );
+
+          }
+          else{
+            Navigator.pushNamed(context, '/about');
+          }
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeInOut,
           transform: Matrix4.identity()..scale(scale),
           transformAlignment: FractionalOffset.center,
-          width: 400,
-          height: 200,
+          width: (wid<840)?wid*0.9:400,
+          height: (hei<wid)?200:250,
           child: Card(
             elevation: elevation,
             shadowColor: shadowColor,
+            color: Color(0xFFF1E4FC),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -221,54 +299,90 @@ class _CourseCardState extends State<CourseCard> {
   }
 }
 
+// --- CHANGE 7: Modified CoursesPageContent to accept the controller and key. ---
 class CoursesPageContent extends StatelessWidget {
-  final bool colossal;
-  const CoursesPageContent({super.key, required this.colossal} );
+  final ScrollController? controller;
+  final GlobalKey? coursesKey;
+
+  const CoursesPageContent({
+    super.key,
+    this.controller,
+    this.coursesKey,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // The extra Scaffold and Stack were removed to simplify the layout.
     return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 20.0),
+      controller: controller,
       children: <Widget>[
-        (colossal)?CourseBannerCarousel():SizedBox.shrink(),
-        SizedBox(height: 20),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.0),
-          child: Text(
-            'Courses',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-          ),
+        CourseBannerCarousel(),
+        const SizedBox(height: 20),
+        Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: Text(
+                  'Courses',
+                  key: coursesKey,
+                  style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ]
         ),
         Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 20.0,
+          runSpacing: 20.0,
+          children: course_data_lib.courseData.map((course) {
+            // For each 'course' in the 'coursesData' list, create a CourseCard
+            return CourseCard(
+              title: course.title,
+              description: course.description,
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: 30,),
+        const Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.symmetric(horizontal: 2.0),
+                child: Text(
+                  'Why PTS?',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ]
+        ),
+        const Wrap(
+          alignment: WrapAlignment.center,
           spacing: 20.0,
           runSpacing: 20.0,
           children: [
             CourseCard(
-              title: 'Grade 9: Foundations of Chemistry',
-              description: 'An introduction to the fundamental concepts of matter, atomic structure, the periodic table, and basic chemical bonding.',
+              title: 'Expert & Passionate Instructor',
+              description: 'Learn from an experienced educator with a Master\'s in Chemistry, dedicated to making complex topics clear and accessible for every student.',
             ),
             CourseCard(
-              title: 'Grade 10: Chemical Reactions & Stoichiometry',
-              description: 'Explore different types of chemical reactions, learn to balance equations, and master the calculations of chemical quantities.',
+              title: 'Personalized Attention',
+              description: 'Our small group sessions ensure that every student gets individual attention. Ask questions freely and learn at a pace that is comfortable for you.',
             ),
             CourseCard(
-              title: 'Grade 11: Inorganic & Physical Chemistry',
-              description: 'A deep dive into periodic trends, advanced bonding theories, thermodynamics, kinetics, and chemical equilibrium.',
+              title: 'Achieve Academic Excellence',
+              description: 'Join a community of successful students. Our methods are proven to boost grades, improve test scores, and build lasting confidence in chemistry.',
             ),
             CourseCard(
-              title: 'Grade 12: Organic Chemistry Essentials',
-              description: 'Discover the world of carbon compounds. Learn about hydrocarbons, functional groups, and the mechanisms of basic organic reactions.',
+              title: 'Go Beyond the Textbook',
+              description: 'Experience chemistry through interactive online tools, real-world examples, and engaging problem-solving sessions that make learning effective and fun.',
             ),
             CourseCard(
-              title: 'Advanced Placement (AP) Chemistry Prep',
-              description: 'A rigorous, college-level course designed to prepare students for the AP Chemistry exam, covering all major topics in-depth.',
+              title: 'Comprehensive Exam Preparation',
+              description: 'Get fully prepared for school exams, standardized tests (SAT/ACT), and AP Chemistry with targeted strategies and extensive practice materials.',
             ),
             CourseCard(
-              title: 'Chemistry Lab Skills & Safety Workshop',
-              description: 'Gain hands-on confidence with essential laboratory techniques, proper use of equipment.',
+              title: 'Build a Strong Foundation for the Future',
+              description: 'Develop critical thinking and a deep understanding of core concepts that will prepare you for success in university-level courses.',
             ),
-
           ],
         ),
       ],

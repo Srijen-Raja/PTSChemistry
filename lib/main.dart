@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ptschemistryclass/login_page.dart';
 import 'home_page.dart';
 import 'courses_page.dart';
 import 'reviews_page.dart';
@@ -25,10 +26,10 @@ class TutorWebsite extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/courses': (context) => const CoursesPage(),
         '/reviews': (context) => const ReviewsPage(),
         '/about': (context) => const AboutPage(),
         '/contact': (context) => const ContactPage(),
+        '/login': (context) => const LoginPage(),
       },
     );
   }
