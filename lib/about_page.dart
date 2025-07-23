@@ -123,7 +123,7 @@ class AboutPage extends StatelessWidget {
                           if (states.contains(MaterialState.hovered)) {
                             return Colors.transparent;
                           }
-                          return null; // Defer to the widget's default.
+                          return null;
                         },
                       ),
                     ), child: Text("Contact me",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),)
