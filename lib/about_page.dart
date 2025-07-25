@@ -37,7 +37,7 @@ class AboutPage extends StatelessWidget {
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
-          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon.jpg"))),
+          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
           const SizedBox(width: 5),
           const Text('About Me', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ]),

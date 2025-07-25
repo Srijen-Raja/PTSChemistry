@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
-          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon.jpg"))),
+          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
           const SizedBox(width: 5),
           const Text('PTS Chemistry Class', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ]),
@@ -490,7 +490,8 @@ class CoursesPageContent extends StatelessWidget {
           child: const Text('Check out My Lectures',style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),),
            onPressed: () { Navigator.pushNamed(context, '/videos');},
         ),
-        ])
+        ]),
+        SizedBox(height: 30,),
       ],
     );
   }
