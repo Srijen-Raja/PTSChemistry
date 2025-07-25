@@ -1,17 +1,128 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'main.dart';
+
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
+//class grade board school
+// name year present position prof reviews
+//
+
   @override
-  Widget build(BuildContext context) {
-    var wid = MediaQuery.of(context).size.width;
-    var hei = MediaQuery.of(context).size.height;
+  Widget build(BuildContext context) {final ButtonStyle navLinkStyle = TextButton.styleFrom(
+    foregroundColor: Colors.black,
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+    textStyle: const TextStyle(fontSize: 15),
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+  ).copyWith(
+    overlayColor: WidgetStateProperty.all(const Color(0xFFE3D5E8)),
+    foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.hovered)) {
+          return Theme.of(context).primaryColor;
+        }
+        return Colors.black;
+      },
+    ),
+  );
+  var wid = MediaQuery.of(context).size.width;
+  var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Me'),
+        automaticallyImplyLeading: false,
+        backgroundColor: appbgcol,
+        foregroundColor: Colors.black,
+        elevation: 1.0,
+        toolbarHeight: 70,
+        title: Row(children: [
+          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon.jpg"))),
+          const SizedBox(width: 5),
+          const Text('About Me', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+        ]),
+        actions: (hei<wid*0.9)?<Widget>[
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/'),
+            style: navLinkStyle,
+            child: const Text('Home'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/reviews'),
+            style: navLinkStyle,
+            child: const Text('Reviews'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/about'),
+            style: navLinkStyle,
+            child: const Text('About Me'),
+          ),
+          const SizedBox(width: 10),
+          OutlinedButton(
+            onPressed: () => Navigator.pushNamed(context, '/contact'),
+            child: const Text('Contact'),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.black,
+              side: const BorderSide(color: Colors.black),
+            ).copyWith(
+              backgroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.hovered)) return Colors.grey.shade100;
+                return null;
+              }),
+            ),
+          ),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context, '/login'),
+            child: const Text('Sign Up'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+            ).copyWith(
+              backgroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
+                return Colors.black;
+              }),
+            ),
+          ),
+          const SizedBox(width: 20),
+        ]:<Widget>[SizedBox.shrink()],
       ),
+        backgroundColor: bgcol,
+        drawer: (hei*0.85>wid)?Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
+              ),ListTile(
+                leading: Icon(Icons.home),
+                title: const Text('Home'),
+                onTap: () => Navigator.pushNamed(context, '/'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: const Text('Reviews'),
+                onTap: () => Navigator.pushNamed(context, '/reviews'),
+              ),ListTile(
+                leading: Icon(Icons.settings),
+                title: const Text('About Me'),
+                onTap: () => Navigator.pushNamed(context, '/about'),
+              ),ListTile(
+                leading: Icon(Icons.settings),
+                title: const Text('Contact'),
+                onTap: () => Navigator.pushNamed(context, '/contact'),
+              ),ListTile(
+                leading: Icon(Icons.settings),
+                title: const Text('Sign Up'),
+                onTap: () => Navigator.pushNamed(context, '/login'),
+              ),
+            ],
+          ),
+        ):null,
       body: Row(children: [
           (wid*0.95>hei)?Column(
             children: [
@@ -19,7 +130,7 @@ class AboutPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset("images/pts-12.jpg"),
+                  Padding(padding: EdgeInsets.all(10),child: Image.asset("images/pts-12.jpg"),),
                   SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -52,8 +163,27 @@ class AboutPage extends StatelessWidget {
                           print("cant open");
                         }
                       },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
+                      SizedBox(width: 5,),
+                      FloatingActionButton(onPressed: () async {
+                        final Uri url = Uri.parse('https://t.me/ptschemistryclass');
+                        if (!await launchUrl(url)) {
+                          print("cant open");
+                        }
+                      },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/telegram.png")),
+
                     ],
                   ),
+                  Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
+                    // This removes the hover effect
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.hovered)) {
+                          return Colors.transparent;
+                        }
+                        return null; // Defer to the widget's default.
+                      },
+                    ),
+                  ), child: Text("Check out my Lectures!",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),),
                   Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'),style: ButtonStyle(
                     // This removes the hover effect
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -64,7 +194,7 @@ class AboutPage extends StatelessWidget {
                         return null; // Defer to the widget's default.
                       },
                     ),
-                  ), child: Text("Contact me",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),)
+                  ), child: Text("Contact me",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),),
                 ],),
 
               ),

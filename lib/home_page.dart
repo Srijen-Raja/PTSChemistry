@@ -3,6 +3,7 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:ptschemistryclass/course_data.dart' as course_data_lib;
 
 import 'courses_page.dart';
+import 'main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -54,21 +55,18 @@ class _HomePageState extends State<HomePage> {
     var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white38,
+        automaticallyImplyLeading: false,
+        backgroundColor: appbgcol,
         foregroundColor: Colors.black,
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
-          SizedBox(height: 50,width: 50,
-            child: Image.asset("images/icon.jpg"),),
-          SizedBox(width: 5,),
-          const Text(
-            'PTS Chemistry Class',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          ),
-        ]
-        ),
-        actions: (hei<wid*0.9)?<Widget>[
+          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon.jpg"))),
+          const SizedBox(width: 5),
+          const Text('PTS Chemistry Class', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+        ]),
+        actions: (hei < wid * 0.9)
+            ? <Widget>[
           TextButton(
             onPressed: _scrollToCourses,
             style: navLinkStyle,
@@ -113,9 +111,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(width: 20),
-        ]:<Widget>[SizedBox.shrink()],
+        ]
+            : <Widget>[const SizedBox.shrink()],
       ),
-      drawer: (hei*0.85>wid)?Drawer(
+      drawer: (hei * 0.85 > wid)
+          ? Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -123,49 +123,58 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
+              child: Text('PTS Chemistry Class', style: TextStyle(fontSize: 24)),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () => Navigator.pushNamed(context, '/'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
               title: const Text('Courses'),
-              // --- CHANGE 5: Also updated the drawer's tap behavior. ---
               onTap: () {
-                Navigator.pop(context); // Close the drawer first
+                Navigator.pop(context);
                 _scrollToCourses();
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.settings),
               title: const Text('Reviews'),
               onTap: () => Navigator.pushNamed(context, '/reviews'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
               title: const Text('About Me'),
               onTap: () => Navigator.pushNamed(context, '/about'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
               title: const Text('Contact'),
               onTap: () => Navigator.pushNamed(context, '/contact'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
               title: const Text('Sign Up'),
               onTap: () => Navigator.pushNamed(context, '/login'),
             ),
           ],
         ),
-      ):null,
+      )
+          : null,
       body: CoursesPageContent(
         controller: _scrollController,
         coursesKey: _coursesKey,
       ),
+      backgroundColor: bgcol,
     );
   }
 }
 
-// Your existing UI widgets remain unchanged.
+// Carousel Images
 final List<String> imgList = [
-  'https://images.unsplash.com/photo-1588702547919-26089e690ecc?q=80&w=2070',
-  'https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070',
+  'images/Screenshot 2025-07-25 201433.png',
+  'images/Screenshot 2025-07-25 201618.png',
   'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070',
 ];
 
@@ -188,15 +197,19 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
     return Column(
       children: [
         CarouselSlider(
-          items: imgList.map((item) => ClipRRect(
+          items: imgList
+              .map((item) => ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-            child: Image.network(item, fit: BoxFit.cover, width: wid),
-          )).toList(),
+            child: item.startsWith('http')
+                ? Image.network(item, fit: BoxFit.cover, width: wid)
+                : Image.asset(item, fit: BoxFit.cover, width: wid),
+          ))
+              .toList(),
           controller: _controller,
           options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: true,
-            aspectRatio: ((MediaQuery.of(context).size.height>MediaQuery.of(context).size.width*0.8)?1.5:2.8),
+            aspectRatio: ((MediaQuery.of(context).size.height > MediaQuery.of(context).size.width * 0.8) ? 1.5 : 2.8),
             viewportFraction: 0.9,
             onPageChanged: (index, reason) {
               setState(() {
@@ -219,7 +232,7 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
                   color: (Theme.of(context).brightness == Brightness.dark
                       ? Colors.white
                       : Colors.black)
-                      .withValues(alpha:  _current == entry.key ? 0.9 : 0.4),
+                      .withOpacity(_current == entry.key ? 0.9 : 0.4),
                 ),
               ),
             );
@@ -229,6 +242,8 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
     );
   }
 }
+
+// --- Stylish CourseCard ---
 
 class CourseCard extends StatefulWidget {
   final String title;
@@ -245,51 +260,134 @@ class _CourseCardState extends State<CourseCard> {
 
   @override
   Widget build(BuildContext context) {
-    final double elevation = _isHovered ? 16.0 : 4.0;
-    final double scale = _isHovered ? 1.03 : 1.0;
-    final Color shadowColor = _isHovered ? Theme.of(context).primaryColor.withValues(alpha: 0.5) : Colors.black;
+    final double elevation = _isHovered ? 24.0 : 8.0;
+    final double scale = _isHovered ? 1.05 : 1.0;
+    final Color shadowColor = _isHovered
+        ? Theme.of(context).primaryColor.withOpacity(0.4)
+        : Colors.black26;
     var wid = MediaQuery.of(context).size.width;
     var hei = MediaQuery.of(context).size.height;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: GestureDetector(
         onTap: () {
-          if(course_data_lib.courseData.any((course) => course.title == widget.title)){
-            Navigator.push(context,MaterialPageRoute(
-              builder: (context) => CoursesPage(title: widget.title),
-            ),
-          );
-
-          }
-          else{
+          if (course_data_lib.courseData.any((course) => course.title == widget.title)) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CoursesPage(title: widget.title),
+                ));
+          } else {
             Navigator.pushNamed(context, '/about');
           }
         },
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           transform: Matrix4.identity()..scale(scale),
           transformAlignment: FractionalOffset.center,
-          width: (wid<840)?wid*0.9:400,
-          height: (hei<wid)?200:250,
-          child: Card(
-            elevation: elevation,
-            shadowColor: shadowColor,
-            color: Color(0xFFF1E4FC),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    widget.title,
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(widget.description, style: const TextStyle(fontSize: 16)),
-                ],
+          width: (wid < 840) ? wid * 0.9 : 380,
+          height: (hei < wid) ? 250 : 290,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: _isHovered
+                ? LinearGradient(
+              colors: [
+                Theme.of(context).primaryColor.withOpacity(0.7),
+                Theme.of(context).primaryColor.withOpacity(0.9),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            )
+                : LinearGradient(
+              colors: [
+                Colors.purple.shade50,
+                Colors.purple.shade100,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: shadowColor,
+                offset: const Offset(0, 8),
+                blurRadius: elevation,
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(30),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(30),
+              onTap: () {
+                if (course_data_lib.courseData.any((course) => course.title == widget.title)) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CoursesPage(title: widget.title),
+                      ));
+                } else {
+                  Navigator.pushNamed(context, '/about');
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.school,
+                          size: 28,
+                          color: _isHovered ? Colors.white : Theme.of(context).primaryColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            widget.title,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: _isHovered ? Colors.white : Colors.black87,
+                              shadows: _isHovered
+                                  ? [
+                                Shadow(
+                                  offset: Offset(1, 1),
+                                  blurRadius: 3.0,
+                                  color: Colors.black26,
+                                )
+                              ]
+                                  : null,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Expanded(
+                      child: Text(
+                        widget.description,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: _isHovered ? Colors.white70 : Colors.black54,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: _isHovered ? Colors.white : Colors.black45,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -299,7 +397,7 @@ class _CourseCardState extends State<CourseCard> {
   }
 }
 
-// --- CHANGE 7: Modified CoursesPageContent to accept the controller and key. ---
+// --- Passes controller and key to CoursesPageContent ---
 class CoursesPageContent extends StatelessWidget {
   final ScrollController? controller;
   final GlobalKey? coursesKey;
@@ -316,44 +414,43 @@ class CoursesPageContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 20.0),
       controller: controller,
       children: <Widget>[
-        CourseBannerCarousel(),
+        const CourseBannerCarousel(),
         const SizedBox(height: 20),
         Wrap(
             alignment: WrapAlignment.center,
             children: [
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
                 child: Text(
                   'Courses',
                   key: coursesKey,
                   style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
               ),
-            ]
-        ),
+            ]),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 20.0,
           runSpacing: 20.0,
           children: course_data_lib.courseData.map((course) {
-            // For each 'course' in the 'coursesData' list, create a CourseCard
             return CourseCard(
               title: course.title,
               description: course.description,
             );
           }).toList(),
         ),
-        const SizedBox(height: 30,),
+        const SizedBox(height: 30),
         const Wrap(
             alignment: WrapAlignment.center,
             children: [
-              Padding(padding: EdgeInsets.symmetric(horizontal: 2.0),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 2.0),
                 child: Text(
                   'Why PTS?',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
               ),
-            ]
-        ),
+            ]),
         const Wrap(
           alignment: WrapAlignment.center,
           spacing: 20.0,
@@ -385,6 +482,15 @@ class CoursesPageContent extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 25,),
+        Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+          TextButton(
+          child: const Text('Check out My Lectures',style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),),
+           onPressed: () { Navigator.pushNamed(context, '/videos');},
+        ),
+        ])
       ],
     );
   }
