@@ -369,9 +369,10 @@ class _ReviewsPageState extends State<ReviewsPage> {
 class ReviewCard extends StatelessWidget {
   final String studentName;
   final String reviewText;
+  final int rating;
 
   const ReviewCard(
-      {super.key, required this.studentName, required this.reviewText, required rating});
+      {super.key, required this.studentName, required this.reviewText, required this.rating});
 
   @override
   Widget build(BuildContext context) {
@@ -384,6 +385,16 @@ class ReviewCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Row(
+              children: List.generate(5, (index) {
+                return Icon(
+                  index < rating ? Icons.star : Icons.star_border,
+                  color: const Color(0xFFFFD400),
+                  size: 30,
+                );
+              }),
+            ),
+
             Text(
               '"$reviewText"',
               style:
