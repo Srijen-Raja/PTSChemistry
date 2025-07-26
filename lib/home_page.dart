@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: (hei * 0.85 > wid)?true:false,
         backgroundColor: appbgcol,
         foregroundColor: Colors.black,
         elevation: 1.0,
@@ -71,6 +71,11 @@ class _HomePageState extends State<HomePage> {
             onPressed: _scrollToCourses,
             style: navLinkStyle,
             child: const Text('Courses'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/material'),
+            style: navLinkStyle,
+            child: const Text('Study Material / Tests'),
           ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/reviews'),
@@ -129,6 +134,11 @@ class _HomePageState extends State<HomePage> {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Study Materials'),
+              onTap: () => Navigator.pushNamed(context, '/material'),
             ),
             ListTile(
               leading: const Icon(Icons.home),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ptschemistryclass/login_page.dart';
+import 'login_page.dart';
 import 'home_page.dart';
 import 'courses_page.dart';
 import 'reviews_page.dart';
 import 'about_page.dart';
 import 'contact_page.dart';
 import 'videos_page.dart';
+import 'material_page.dart';
 
 void main() {
   runApp(const TutorWebsite());
@@ -34,6 +35,7 @@ class TutorWebsite extends StatelessWidget {
         '/contact': (context) => const ContactPage(),
         '/login': (context) => const LoginPage(),
         '/videos': (context) => const VideosPage(),
+        '/material': (context) => MaterialsPage(),
       },
     );
   }

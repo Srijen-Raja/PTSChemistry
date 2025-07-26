@@ -26,7 +26,7 @@ class ReviewsPage extends StatelessWidget {
   var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: (hei * 0.85 > wid)?true:false,
         backgroundColor: appbgcol,
         foregroundColor: Colors.black,
         elevation: 1.0,
@@ -41,6 +41,11 @@ class ReviewsPage extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(context, '/'),
             style: navLinkStyle,
             child: const Text('Home'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/material'),
+            style: navLinkStyle,
+            child: const Text('Study Material / Tests'),
           ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/reviews'),
@@ -97,6 +102,11 @@ class ReviewsPage extends StatelessWidget {
               leading: Icon(Icons.home),
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Study Materials / Tests'),
+              onTap: () => Navigator.pushNamed(context, '/material'),
             ),
             ListTile(
               leading: Icon(Icons.settings),

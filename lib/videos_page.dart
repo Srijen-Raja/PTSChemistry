@@ -16,6 +16,7 @@ class _VideosPageState extends State<VideosPage> {
     'gCdwPtiNrvM',
     '3u6D2oPfcZU',
     '4baFtmMsWz0',
+    'Kg3Gan2LXjY'
   ];
 
   late final List<YoutubePlayerController> controllers;
@@ -72,7 +73,7 @@ class _VideosPageState extends State<VideosPage> {
     var hei = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: (hei * 0.85 > wid)?true:false,
         backgroundColor: appbgcol,
         foregroundColor: Colors.black,
         elevation: 1.0,
@@ -87,6 +88,11 @@ class _VideosPageState extends State<VideosPage> {
             onPressed: () => Navigator.pushNamed(context, '/'),
             style: navLinkStyle,
             child: const Text('Home'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/material'),
+            style: navLinkStyle,
+            child: const Text('Study Material / Tests'),
           ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/reviews'),
@@ -129,6 +135,45 @@ class _VideosPageState extends State<VideosPage> {
           const SizedBox(width: 20),
         ]:<Widget>[SizedBox.shrink()],
       ),
+      drawer: (hei*0.85>wid)?Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
+            ),ListTile(
+              leading: Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () => Navigator.pushNamed(context, '/'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Study Materials / Tests'),
+              onTap: () => Navigator.pushNamed(context, '/material'),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Reviews'),
+              onTap: () => Navigator.pushNamed(context, '/reviews'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('About Me'),
+              onTap: () => Navigator.pushNamed(context, '/about'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Contact'),
+              onTap: () => Navigator.pushNamed(context, '/contact'),
+            ),ListTile(
+              leading: Icon(Icons.settings),
+              title: const Text('Sign Up'),
+              onTap: () => Navigator.pushNamed(context, '/login'),
+            ),
+          ],
+        ),
+      ):null,
       backgroundColor: bgcol,
       body:
       ListView.builder(
