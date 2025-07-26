@@ -141,7 +141,7 @@ class CoursesPage extends StatelessWidget {
         SizedBox(height: 15,),
         Text("Time: " + courseData.firstWhere((course) => course.title == title).timings, style: TextStyle(fontSize: 20),),
         SizedBox(height: 15,),
-        Text("Price: " + courseData.firstWhere((course) => course.title == title).price, style: TextStyle(fontSize: 20),),
+        Text("Fees: " + courseData.firstWhere((course) => course.title == title).price, style: TextStyle(fontSize: 20),),
         SizedBox(height: 15,),
       ]),
     );

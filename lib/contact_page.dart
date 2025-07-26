@@ -149,6 +149,12 @@ class ContactPage extends StatelessWidget {
               'Have a question or want to book a session? Call, Whatsapp or Telegram me.',
               style: TextStyle(fontSize: 16),
             ),
+            SizedBox(height: 5,),
+            const Text(
+              'Please include all relevant details such as Grade, board(CBSE, State etc) and Country.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 5,),
             const Text(
               'Contact no. +91 7448961696',
               style: TextStyle(fontSize: 16),
@@ -207,7 +213,7 @@ class ContactPage extends StatelessWidget {
             // ),
             const SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://www.youtube.com/@SrinivasanPT');

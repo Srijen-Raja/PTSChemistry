@@ -245,9 +245,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
                   }
 
                   if (complexFormulaWithDate(inputCode)) {
-                    print("a");
                     setState(() {
-                      print("abd");
                       unlockedtest = true;
                     });
                   } else {
