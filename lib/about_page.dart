@@ -331,7 +331,7 @@ class AboutPage extends StatelessWidget {
             ),
             ListTile(
               subtitle: Text("PhD (Science)"),
-              title: Text("Bose Institute, Jadhavpur Univversity,Kolkatta",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+              title: Text("Bose Institute, Jadhavpur University, Kolkatta",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
             ),
             ListTile(
               subtitle: Text("Cert. Course in BioInformatics"),
@@ -339,7 +339,7 @@ class AboutPage extends StatelessWidget {
             ),
             ListTile(
               subtitle: Text("MSc. (BioInformatics)"),
-              title: Text("Sikkim Manipal University of Technology and Sciences",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+              title: Text("Sikkim Manipal University of Technology and Science",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
             ),
             ListTile(
               subtitle: Text("MA. Philosophy and Religion"),
