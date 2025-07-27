@@ -79,24 +79,25 @@ class ContactPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Sign Up'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-            ).copyWith(
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
-                return Colors.black;
-              }),
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/login'),
+          //   child: const Text('Sign Up'),
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.black,
+          //     foregroundColor: Colors.white,
+          //   ).copyWith(
+          //     backgroundColor: WidgetStateProperty.resolveWith((states) {
+          //       if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
+          //       return Colors.black;
+          //     }),
+          //   ),
+          // ),
           const SizedBox(width: 20),
         ]:<Widget>[SizedBox.shrink()],
       ),
       backgroundColor: bgcol,
-      drawer: (hei*0.85>wid)?Drawer(
+      drawer: (hei * 0.85 > wid)
+          ? Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -104,37 +105,42 @@ class ContactPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
-            ),ListTile(
-              leading: Icon(Icons.home),
+              child: Text('PTS Chemistry Class', style: TextStyle(fontSize: 24)),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home_outlined),
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Study Materials / Tests'),
+              leading: const Icon(Icons.book_outlined),
+              title: const Text('Study Materials'),
               onTap: () => Navigator.pushNamed(context, '/material'),
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.reviews_outlined),
               title: const Text('Reviews'),
               onTap: () => Navigator.pushNamed(context, '/reviews'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_box_outlined),
               title: const Text('About Me'),
               onTap: () => Navigator.pushNamed(context, '/about'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              leading: const Icon(Icons.quick_contacts_dialer_outlined),
               title: const Text('Contact'),
               onTap: () => Navigator.pushNamed(context, '/contact'),
-            ),ListTile(
-              leading: Icon(Icons.settings),
-              title: const Text('Sign Up'),
-              onTap: () => Navigator.pushNamed(context, '/login'),
             ),
+            // ListTile(
+            //   leading: const Icon(Icons.settings),
+            //   title: const Text('Sign Up'),
+            //   onTap: () => Navigator.pushNamed(context, '/login'),
+            // ),
           ],
         ),
-      ):null,
+      )
+          : null,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -159,7 +165,15 @@ class ContactPage extends StatelessWidget {
               'Contact no. +91 7448961696',
               style: TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/NFtq2u4FPyXvdvRe6");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("To Register for Admissions Please Click here",style: TextStyle(fontSize: 16,color: Colors.blue)),
+            ),
             // Form(
             //   key: formKey,
             //   child: Column(

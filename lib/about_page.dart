@@ -8,7 +8,8 @@ class AboutPage extends StatelessWidget {
 
 //class grade board school
 // name year present position prof reviews
-//
+//(Formatting)
+  // History for JEE
 
   @override
   Widget build(BuildContext context) {final ButtonStyle navLinkStyle = TextButton.styleFrom(
@@ -77,24 +78,25 @@ class AboutPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Sign Up'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-            ).copyWith(
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
-                return Colors.black;
-              }),
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/login'),
+          //   child: const Text('Sign Up'),
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.black,
+          //     foregroundColor: Colors.white,
+          //   ).copyWith(
+          //     backgroundColor: WidgetStateProperty.resolveWith((states) {
+          //       if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
+          //       return Colors.black;
+          //     }),
+          //   ),
+          // ),
           const SizedBox(width: 20),
         ]:<Widget>[SizedBox.shrink()],
       ),
         backgroundColor: bgcol,
-        drawer: (hei*0.85>wid)?Drawer(
+        drawer: (hei * 0.85 > wid)
+            ? Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -102,37 +104,42 @@ class AboutPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
-                child: Text('PTS Chemistry Class',style: TextStyle(fontSize: 24),),
-              ),ListTile(
-                leading: Icon(Icons.home),
+                child: Text('PTS Chemistry Class', style: TextStyle(fontSize: 24)),
+              ),
+              ListTile(
+                leading: const Icon(Icons.home_outlined),
                 title: const Text('Home'),
                 onTap: () => Navigator.pushNamed(context, '/'),
               ),
               ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text('Study Materials / Tests'),
+                leading: const Icon(Icons.book_outlined),
+                title: const Text('Study Materials'),
                 onTap: () => Navigator.pushNamed(context, '/material'),
               ),
               ListTile(
-                leading: Icon(Icons.settings),
+                leading: const Icon(Icons.reviews_outlined),
                 title: const Text('Reviews'),
                 onTap: () => Navigator.pushNamed(context, '/reviews'),
-              ),ListTile(
-                leading: Icon(Icons.settings),
+              ),
+              ListTile(
+                leading: const Icon(Icons.account_box_outlined),
                 title: const Text('About Me'),
                 onTap: () => Navigator.pushNamed(context, '/about'),
-              ),ListTile(
-                leading: Icon(Icons.settings),
+              ),
+              ListTile(
+                leading: const Icon(Icons.quick_contacts_dialer_outlined),
                 title: const Text('Contact'),
                 onTap: () => Navigator.pushNamed(context, '/contact'),
-              ),ListTile(
-                leading: Icon(Icons.settings),
-                title: const Text('Sign Up'),
-                onTap: () => Navigator.pushNamed(context, '/login'),
               ),
+              // ListTile(
+              //   leading: const Icon(Icons.settings),
+              //   title: const Text('Sign Up'),
+              //   onTap: () => Navigator.pushNamed(context, '/login'),
+              // ),
             ],
           ),
-        ):null,
+        )
+            : null,
       body: Row(children: [
           (wid*0.95>hei)?Column(
             children: [
@@ -141,7 +148,8 @@ class AboutPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(padding: EdgeInsets.all(10),child: Image.asset("images/pts-12.jpg"),),
-                  SizedBox(height: 10,),
+                  Text("Dr. PT Srinivasan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+                  SizedBox(height: 6,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -194,6 +202,7 @@ class AboutPage extends StatelessWidget {
                       },
                     ),
                   ), child: Text("Check out my Lectures!",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),),
+
                   Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'),style: ButtonStyle(
                     // This removes the hover effect
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -256,6 +265,17 @@ class AboutPage extends StatelessWidget {
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
                       ],
                     ),
+                    Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
+                      // This removes the hover effect
+                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.hovered)) {
+                            return Colors.transparent;
+                          }
+                          return null; // Defer to the widget's default.
+                        },
+                      ),
+                    ), child: Text("Check out my Lectures!",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),),
                     Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'),style: ButtonStyle(
                       // This removes the hover effect
                       overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -273,7 +293,7 @@ class AboutPage extends StatelessWidget {
               ],
             ):SizedBox.shrink(),
             Text(
-                'Welcome to PTS Chemistry',
+                'Welcome to PTS Chemistry Class',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               softWrap: true,
             ),
@@ -284,7 +304,7 @@ class AboutPage extends StatelessWidget {
               softWrap: true,
             ),
             SizedBox(height: 10,),Text(
-              ' A Great Career starts with a Right Decision !',
+              'A Great Career starts with a Right Decision !',
               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18, height: 1.5),
               softWrap: true,
             ),
@@ -300,6 +320,39 @@ class AboutPage extends StatelessWidget {
               style: TextStyle(fontSize: 16, height: 1.5),
               softWrap: true,
             ),
+            SizedBox(height: 40,),
+            Text(
+              'Qualifications',
+              style: TextStyle(fontSize: 26, height: 1.5, fontWeight: FontWeight.bold),
+            ),
+            ListTile(
+              subtitle: Text("MSc. (Biochemistry)"),
+              title: Text("Christian Medical College & Hospital Vellore",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("PhD (Science)"),
+              title: Text("Bose Institute, Jadhavpur Univversity,Kolkatta",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("Cert. Course in BioInformatics"),
+              title: Text("Stanford University",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("MSc. (BioInformatics)"),
+              title: Text("Sikkim Manipal University of Technology and Sciences",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("MA. Philosophy and Religion"),
+              title: Text("Madurai Kamaraj University",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("MA. Tamil"),
+              title: Text("University of Madras",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
+            ListTile(
+              subtitle: Text("Certified Academic Counselor"),
+              title: Text("IGNOU",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.pink),),
+            ),
             SizedBox(height: 30,),
             Text(
               'What I Offer',
@@ -308,10 +361,45 @@ class AboutPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              ' Personalized Lessons: Every student learns differently. I tailor my teaching style and materials to fit your individual needs and learning pace.\n Exam Preparation: Need help preparing for an upcoming test or exam? I’ll guide you through key concepts, problem-solving techniques, and effective study strategies.\n Homework Assistance: Stuck on a tricky assignment? I’m here to break down complex problems and make homework less stressful.\n Foundations to Advanced Topics: From the basics of atoms and molecules to advanced organic and inorganic chemistry, I cover it all.\n Graded Online Tests: I give regular tests with instant grading on the topics covered in each class for better grasp of the subject and make it easy to remember.\n Interactive Learning: Use of digital whiteboards, quizzes, and real-time feedback.\n Resource Library: Access to curated study notes, practice questions, and helpful resources.',
+              'Personalized Lessons: ',
+              style: TextStyle(fontSize: 16, height: 1.5,fontWeight: FontWeight.bold),
+              softWrap: true,
+            ),
+            Text(
+              'Every student learns differently. I tailor my teaching style and materials to fit your individual needs and learning pace.\n',
               style: TextStyle(fontSize: 16, height: 1.5),
               softWrap: true,
             ),
+            Text(
+              'Exam Preparation: ',
+              style: TextStyle(fontSize: 16, height: 1.5, fontWeight: FontWeight.bold),
+              softWrap: true,
+            ),
+            Text(
+              'Need help preparing for an upcoming test or exam? I’ll guide you through key concepts, problem-solving techniques, and effective study strategies.\n',
+              style: TextStyle(fontSize: 16, height: 1.5),
+              softWrap: true,
+            ),
+            Text("Homework Assistance: ",
+            style: TextStyle(fontSize: 16, height: 1.5,fontWeight: FontWeight.bold),),
+            Text("Stuck on a tricky assignment? I’m here to break down complex problems and make homework less stressful.\n",
+            style: TextStyle(fontSize: 16,height: 1.5),),
+            Text("Foundations to Advanced Topics: ",
+            style: TextStyle(fontSize: 16,height: 1.5,fontWeight: FontWeight.bold),),
+            Text("From the basics of atoms and molecules to advanced organic and inorganic chemistry, I cover it all.\n",
+            style: TextStyle(fontSize: 16,height: 1.5),),
+            Text("Graded Online Tests: ",
+            style: TextStyle(fontSize: 16,height: 1.5,fontWeight: FontWeight.bold),),
+            Text("I give regular tests with instant grading on the topics covered in each class for better grasp of the subject and make it easy to remember.\n",
+            style: TextStyle(fontSize: 16,height: 1.5),),
+            Text("Interactive Learning: ",
+            style: TextStyle(fontSize: 16,height: 1.5,fontWeight: FontWeight.bold),),
+            Text("Use of digital whiteboards, quizzes, and real-time feedback.\n",
+            style: TextStyle(fontSize: 16,height: 1.5),),
+            Text("Resource Library: ",
+            style: TextStyle(fontSize: 16,height: 1.5,fontWeight: FontWeight.bold),),
+            Text("Access to curated study notes, practice questions, and helpful resources.",
+            style: TextStyle(fontSize: 16,height: 1.5),),
             SizedBox(height: 30,),
             Text(
               'Let’s Start Your Chemistry Journey!',

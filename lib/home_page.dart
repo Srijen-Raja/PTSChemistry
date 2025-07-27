@@ -102,19 +102,19 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(width: 10),
-          ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Sign Up'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-            ).copyWith(
-              backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
-                return Colors.black;
-              }),
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/login'),
+          //   child: const Text('Sign Up'),
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.black,
+          //     foregroundColor: Colors.white,
+          //   ).copyWith(
+          //     backgroundColor: WidgetStateProperty.resolveWith((states) {
+          //       if (states.contains(WidgetState.hovered)) return Colors.grey.shade800;
+          //       return Colors.black;
+          //     }),
+          //   ),
+          // ),
           const SizedBox(width: 20),
         ]
             : <Widget>[const SizedBox.shrink()],
@@ -131,17 +131,17 @@ class _HomePageState extends State<HomePage> {
               child: Text('PTS Chemistry Class', style: TextStyle(fontSize: 24)),
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.home_outlined),
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.book_outlined),
               title: const Text('Study Materials'),
               onTap: () => Navigator.pushNamed(context, '/material'),
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.home_outlined),
               title: const Text('Courses'),
               onTap: () {
                 Navigator.pop(context);
@@ -149,25 +149,25 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.reviews_outlined),
               title: const Text('Reviews'),
               onTap: () => Navigator.pushNamed(context, '/reviews'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.account_box_outlined),
               title: const Text('About Me'),
               onTap: () => Navigator.pushNamed(context, '/about'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.quick_contacts_dialer_outlined),
               title: const Text('Contact'),
               onTap: () => Navigator.pushNamed(context, '/contact'),
             ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Sign Up'),
-              onTap: () => Navigator.pushNamed(context, '/login'),
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.settings),
+            //   title: const Text('Sign Up'),
+            //   onTap: () => Navigator.pushNamed(context, '/login'),
+            // ),
           ],
         ),
       )
@@ -184,8 +184,9 @@ class _HomePageState extends State<HomePage> {
 // Carousel Images
 final List<String> imgList = [
   'images/Screenshot 2025-07-25 201433.png',
+  'images/pts2.jpg',
   'images/Screenshot 2025-07-25 201618.png',
-  'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070',
+  'images/WhatsApp Image 2025-07-27 at 14.43.43_7dc43aa2.jpg',
 ];
 
 class CourseBannerCarousel extends StatefulWidget {
@@ -430,7 +431,7 @@ class CoursesPageContent extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 2.0),
                 child: Text(
                   'Courses',
                   key: coursesKey,
@@ -449,7 +450,7 @@ class CoursesPageContent extends StatelessWidget {
             );
           }).toList(),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 50),
         const Wrap(
             alignment: WrapAlignment.center,
             children: [
@@ -461,6 +462,7 @@ class CoursesPageContent extends StatelessWidget {
                 ),
               ),
             ]),
+        SizedBox(height: 20,),
         const Wrap(
           alignment: WrapAlignment.center,
           spacing: 20.0,

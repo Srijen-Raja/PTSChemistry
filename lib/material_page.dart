@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_page.dart';
 import 'main.dart'; // Make sure this imports variables like appbgcol, bgcol, etc.
 
@@ -106,21 +107,21 @@ class _MaterialsPageState extends State<MaterialsPage> {
             ),
           ),
           const SizedBox(width: 10),
-          ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Sign Up'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-            ).copyWith(
-              backgroundColor: MaterialStateProperty.resolveWith((states) {
-                if (states.contains(MaterialState.hovered)) {
-                  return Colors.grey.shade800;
-                }
-                return Colors.black;
-              }),
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/login'),
+          //   child: const Text('Sign Up'),
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.black,
+          //     foregroundColor: Colors.white,
+          //   ).copyWith(
+          //     backgroundColor: MaterialStateProperty.resolveWith((states) {
+          //       if (states.contains(MaterialState.hovered)) {
+          //         return Colors.grey.shade800;
+          //       }
+          //       return Colors.black;
+          //     }),
+          //   ),
+          // ),
           const SizedBox(width: 20),
         ]
             : <Widget>[const SizedBox.shrink()],
@@ -134,41 +135,38 @@ class _MaterialsPageState extends State<MaterialsPage> {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text(
-                'PTS Chemistry Class',
-                style: TextStyle(fontSize: 24),
-              ),
+              child: Text('PTS Chemistry Class', style: TextStyle(fontSize: 24)),
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.home_outlined),
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.book_outlined),
               title: const Text('Study Materials'),
               onTap: () => Navigator.pushNamed(context, '/material'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.reviews_outlined),
               title: const Text('Reviews'),
               onTap: () => Navigator.pushNamed(context, '/reviews'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.account_box_outlined),
               title: const Text('About Me'),
               onTap: () => Navigator.pushNamed(context, '/about'),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.quick_contacts_dialer_outlined),
               title: const Text('Contact'),
               onTap: () => Navigator.pushNamed(context, '/contact'),
             ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Sign Up'),
-              onTap: () => Navigator.pushNamed(context, '/login'),
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.settings),
+            //   title: const Text('Sign Up'),
+            //   onTap: () => Navigator.pushNamed(context, '/login'),
+            // ),
           ],
         ),
       )
@@ -185,18 +183,77 @@ class _MaterialsPageState extends State<MaterialsPage> {
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              "Study Material Link 1",
-              style: TextStyle(fontSize: 20),
+          children: [
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/5MJZj3GGPod26jkG6");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 12 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            Text(
-              "Study Material Link 2",
-              style: TextStyle(fontSize: 20),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/RSCoc8y1AxCCx9GY7");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            Text(
-              "Study Material Link 3",
-              style: TextStyle(fontSize: 20),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/rec4FsarEwuaUFtE7");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 10 Study Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/RpC9bLp2Ag1dPkYo7");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/VZS1oJLCPYH4HY776");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://forms.gle/fBwisSvfCYyP7qyi9");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            ),
+            TextButton(
+              onPressed: () async {
+                final uri = Uri.parse("https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing");
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                } },
+              child: Text("JEE Free Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
           ],
         ),
@@ -208,12 +265,12 @@ class _MaterialsPageState extends State<MaterialsPage> {
           children: [
             const SizedBox(height: 10),
             SizedBox(
-              width: 350,
+              width: 450,
               child: TextField(
                 controller: _codeController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter Code to access Tests',
+                  labelText: 'Enter Code to access Premium Materials & Tests',
                 ),
                 keyboardType: TextInputType.number,
               ),
@@ -268,20 +325,76 @@ class _MaterialsPageState extends State<MaterialsPage> {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Study Material Link 1",
-            style: TextStyle(fontSize: 20),
+        children: [TextButton(
+          onPressed: () async {
+            final uri = Uri.parse("https://forms.gle/5MJZj3GGPod26jkG6");
+            if (await canLaunchUrl(uri)) {
+              await launchUrl(uri);
+            } },
+          child: Text("Class 12 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+        ),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+          ),TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://forms.gle/RSCoc8y1AxCCx9GY7");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
-          const SizedBox(height: 4),
-          const Text(
-            "Study Material Link 2",
-            style: TextStyle(fontSize: 20),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://forms.gle/rec4FsarEwuaUFtE7");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
-          const SizedBox(height: 4),
-          const Text(
-            "Study Material Link 3",
-            style: TextStyle(fontSize: 20),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 10 Study Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
+          ),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://forms.gle/RpC9bLp2Ag1dPkYo7");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+          ),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://forms.gle/VZS1oJLCPYH4HY776");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+          ),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://forms.gle/fBwisSvfCYyP7qyi9");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
+          ),
+          TextButton(
+            onPressed: () async {
+              final uri = Uri.parse("https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing");
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              } },
+            child: Text("JEE Free Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           const SizedBox(height: 20),
           const Divider(color: Colors.black, thickness: 1),
