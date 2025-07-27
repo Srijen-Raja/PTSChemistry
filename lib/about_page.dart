@@ -147,8 +147,8 @@ class AboutPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.all(10),child: Image.asset("images/pts-12.jpg"),),
-                  Text("Dr. PT Srinivasan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+                  Padding(padding: EdgeInsets.all(8),child: Image.asset("images/pts-12.jpg"),),
+                  Text("Dr. PT Srinivasan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
                   SizedBox(height: 6,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
