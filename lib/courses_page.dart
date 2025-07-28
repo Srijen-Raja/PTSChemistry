@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'home_page.dart';
@@ -175,9 +176,10 @@ class CoursesPage extends StatelessWidget {
     ),
     onTap: () async {
     final uri = Uri.parse(link.substring(link.indexOf("http")));
-    if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-    }
+
+      if (!await launchUrl(uri)) {
+        print("cant open");
+      };
     },
     ),
     ))

@@ -166,13 +166,14 @@ class ContactPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 10),
-            TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/NFtq2u4FPyXvdvRe6");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
-              child: Text("To Register for Admissions Please Click here",style: TextStyle(fontSize: 16,color: Colors.blue)),
+            TextButton(child: Text("To Register for Admissions Please Click here",style: TextStyle(fontSize: 16,color: Colors.blue)),
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/NFtq2u4FPyXvdvRe6');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    }
+
             ),
             // Form(
             //   key: formKey,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,8 +71,8 @@ class _MaterialsPageState extends State<MaterialsPage> {
                 icon: Image.asset("images/icon1.png")),
           ),
           const SizedBox(width: 5),
-          const Text('Study Materials & Tests',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          (kIsWeb)?Text('Study Materials & Tests',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)):Text("Study Materials",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ]),
         actions: (hei < wid * 0.9)
             ? <Widget>[
@@ -185,74 +186,79 @@ class _MaterialsPageState extends State<MaterialsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/5MJZj3GGPod26jkG6");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+        onPressed: () async {
+      final Uri url = Uri.parse('https://forms.gle/5MJZj3GGPod26jkG6');
+      if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 12 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
             TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/RSCoc8y1AxCCx9GY7");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/RSCoc8y1AxCCx9GY7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
             TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/rec4FsarEwuaUFtE7");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/rec4FsarEwuaUFtE7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
             TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 10 Study Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/RpC9bLp2Ag1dPkYo7");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+            TextButton(onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/RpC9bLp2Ag1dPkYo7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/VZS1oJLCPYH4HY776");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+            TextButton(onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/VZS1oJLCPYH4HY776');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://forms.gle/fBwisSvfCYyP7qyi9");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+            TextButton(onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/fBwisSvfCYyP7qyi9');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
-            TextButton(
-              onPressed: () async {
-                final uri = Uri.parse("https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing");
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                } },
+            TextButton(onPressed: () async {
+    final Uri url = Uri.parse('https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
               child: Text("JEE Free Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
             ),
           ],
@@ -326,74 +332,83 @@ class _MaterialsPageState extends State<MaterialsPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [TextButton(
-          onPressed: () async {
-            final uri = Uri.parse("https://forms.gle/5MJZj3GGPod26jkG6");
-            if (await canLaunchUrl(uri)) {
-              await launchUrl(uri);
-            } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/5MJZj3GGPod26jkG6');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
           child: Text("Class 12 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
         ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://www.classmarker.com/online-test/start/?quiz=kem59aa5b4a2388a');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://forms.gle/RSCoc8y1AxCCx9GY7");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/RSCoc8y1AxCCx9GY7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 11 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://forms.gle/rec4FsarEwuaUFtE7");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/rec4FsarEwuaUFtE7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://docs.google.com/document/d/13AH4OWre_45xdzu1_PVcFbjiIKlY2ZB6/edit?usp=sharing&ouid=105944921619763235184&rtpof=true&sd=true');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 10 Study Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://forms.gle/RpC9bLp2Ag1dPkYo7");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/RpC9bLp2Ag1dPkYo7');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 10 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://forms.gle/VZS1oJLCPYH4HY776");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/VZS1oJLCPYH4HY776');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://forms.gle/fBwisSvfCYyP7qyi9");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://forms.gle/fBwisSvfCYyP7qyi9');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("Class 9 Online Test",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           TextButton(
-            onPressed: () async {
-              final uri = Uri.parse("https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing");
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              } },
+    onPressed: () async {
+    final Uri url = Uri.parse('https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing');
+    if (!await launchUrl(url)) {
+    print("cant open");
+    };
+    },
             child: Text("JEE Free Material",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ),
           const SizedBox(height: 20),
@@ -405,7 +420,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
               controller: _codeController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Enter Code to access Tests',
+                labelText: 'Enter Code to access Premium Materials & Tests',
               ),
               keyboardType: TextInputType.number,
             ),

@@ -147,9 +147,10 @@ class AboutPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.all(8),child: Image.asset("images/pts-12.jpg"),),
+                  Padding(padding: EdgeInsets.all(8),child: SizedBox(height: hei*0.6,child: Image.asset("images/pts-12.jpg"),),),
                   Text("Dr. PT Srinivasan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
                   SizedBox(height: 6,),
+                  SizedBox(height: 40,child:
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -187,10 +188,9 @@ class AboutPage extends StatelessWidget {
                         if (!await launchUrl(url)) {
                           print("cant open");
                         }
-                      },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/telegram.png")),
-
+                      },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/telegram.png"),),
                     ],
-                  ),
+                  ),),
                   Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
                     // This removes the hover effect
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -232,6 +232,8 @@ class AboutPage extends StatelessWidget {
                   children: [
                     Image.asset("images/pts-12.jpg"),
                     SizedBox(height: 10,),
+                    Text("Dr. PT Srinivasan",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
+                    SizedBox(height: 40,child:
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -263,8 +265,15 @@ class AboutPage extends StatelessWidget {
                             print("cant open");
                           }
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
+                        SizedBox(width: 5,),
+                        FloatingActionButton(onPressed: () async {
+                          final Uri url = Uri.parse('https://t.me/ptschemistryclass');
+                          if (!await launchUrl(url)) {
+                            print("cant open");
+                          }
+                        },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/telegram.png"),),
                       ],
-                    ),
+                    ),),
                     Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
                       // This removes the hover effect
                       overlayColor: MaterialStateProperty.resolveWith<Color?>(
