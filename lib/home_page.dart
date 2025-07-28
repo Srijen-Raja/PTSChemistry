@@ -243,7 +243,7 @@ class _CourseBannerCarouselState extends State<CourseBannerCarousel> {
                   color: (Theme.of(context).brightness == Brightness.dark
                       ? Colors.white
                       : Colors.black)
-                      .withOpacity(_current == entry.key ? 0.9 : 0.4),
+                      .withValues(alpha: _current == entry.key ? 0.9 : 0.4),
                 ),
               ),
             );
@@ -274,7 +274,7 @@ class _CourseCardState extends State<CourseCard> {
     final double elevation = _isHovered ? 24.0 : 8.0;
     final double scale = _isHovered ? 1.05 : 1.0;
     final Color shadowColor = _isHovered
-        ? Theme.of(context).primaryColor.withOpacity(0.4)
+        ? Theme.of(context).primaryColor.withValues(alpha: 0.4)
         : Colors.black26;
     var wid = MediaQuery.of(context).size.width;
     var hei = MediaQuery.of(context).size.height;
@@ -307,8 +307,8 @@ class _CourseCardState extends State<CourseCard> {
             gradient: _isHovered
                 ? LinearGradient(
               colors: [
-                Theme.of(context).primaryColor.withOpacity(0.7),
-                Theme.of(context).primaryColor.withOpacity(0.9),
+                Theme.of(context).primaryColor.withValues(alpha: 0.7),
+                Theme.of(context).primaryColor.withValues(alpha: 0.9),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,

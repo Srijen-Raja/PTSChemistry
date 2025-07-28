@@ -178,7 +178,7 @@ class CoursesPage extends StatelessWidget {
     final uri = Uri.parse(link.substring(link.indexOf("http")));
 
       if (!await launchUrl(uri)) {
-        print("cant open");
+        //print("cant open");
       };
     },
     ),

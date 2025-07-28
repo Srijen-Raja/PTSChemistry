@@ -24,10 +24,10 @@ class _ReviewsPageState extends State<ReviewsPage> {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(14))),
     ).copyWith(
-      overlayColor: MaterialStateProperty.all(const Color(0xFFE3D5E8)),
-      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
+      overlayColor: WidgetStateProperty.all(const Color(0xFFE3D5E8)),
+      foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+            (Set<WidgetState> states) {
+          if (states.contains(WidgetState.hovered)) {
             return Theme.of(context).primaryColor;
           }
           return Colors.black;
@@ -88,8 +88,8 @@ class _ReviewsPageState extends State<ReviewsPage> {
               foregroundColor: Colors.black,
               side: const BorderSide(color: Colors.black),
             ).copyWith(
-              backgroundColor: MaterialStateProperty.resolveWith((states) {
-                if (states.contains(MaterialState.hovered)) {
+              backgroundColor: WidgetStateProperty.resolveWith((states) {
+                if (states.contains(WidgetState.hovered)) {
                   return Colors.grey.shade100;
                 }
                 return null;

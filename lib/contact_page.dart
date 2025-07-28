@@ -170,7 +170,7 @@ class ContactPage extends StatelessWidget {
     onPressed: () async {
     final Uri url = Uri.parse('https://forms.gle/NFtq2u4FPyXvdvRe6');
     if (!await launchUrl(url)) {
-    print("cant open");
+    //print("cant open");
     };
     }
 
@@ -233,7 +233,7 @@ class ContactPage extends StatelessWidget {
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://www.youtube.com/@SrinivasanPT');
                   if (!await launchUrl(url)) {
-                    print("cant open");
+                   // print("cant open");
                   }
                 }
                     ,elevation: 0, hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent,child: Image.asset("images/youtube.png")),
@@ -241,28 +241,28 @@ class ContactPage extends StatelessWidget {
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://api.whatsapp.com/send/?phone=917448961696&text&type=phone_number&app_absent=0');
                   if (!await launchUrl(url)) {
-                    print("cant open");
+                   // print("cant open");
                   }
                 },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/whatsapp.png")),
                 SizedBox(width: 5,),
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://www.facebook.com/PaadhoorThiruvengadachariSrinivasan/');
                   if (!await launchUrl(url)) {
-                    print("cant open");
+                    //print("cant open");
                   }
                 },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/facebook.png")),
                 SizedBox(width: 5,),
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://www.instagram.com/profpts/');
                   if (!await launchUrl(url)) {
-                    print("cant open");
+                  //  print("cant open");
                   }
                 },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
                 SizedBox(width: 5,),
                 FloatingActionButton(onPressed: () async {
                   final Uri url = Uri.parse('https://t.me/ptschemistryclass');
                   if (!await launchUrl(url)) {
-                    print("cant open");
+                   // print("cant open");
                   }
                 },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/telegram.png")),
 

@@ -157,7 +157,7 @@ class AboutPage extends StatelessWidget {
                       FloatingActionButton(onPressed: () async {
                         final Uri url = Uri.parse('https://www.youtube.com/@SrinivasanPT');
                         if (!await launchUrl(url)) {
-                          print("cant open");
+                          //print("cant open");
                         }
                       }
                           ,elevation: 0, hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent,child: Image.asset("images/youtube.png")),
@@ -165,37 +165,37 @@ class AboutPage extends StatelessWidget {
                       FloatingActionButton(onPressed: () async {
                         final Uri url = Uri.parse('https://api.whatsapp.com/send/?phone=917448961696&text&type=phone_number&app_absent=0');
                         if (!await launchUrl(url)) {
-                          print("cant open");
+                          //print("cant open");
                         }
                       },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/whatsapp.png")),
                       SizedBox(width: 5,),
                       FloatingActionButton(onPressed: () async {
                         final Uri url = Uri.parse('https://www.facebook.com/PaadhoorThiruvengadachariSrinivasan/');
                         if (!await launchUrl(url)) {
-                          print("cant open");
+                          //print("cant open");
                         }
                       },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/facebook.png")),
                       SizedBox(width: 5,),
                       FloatingActionButton(onPressed: () async {
                         final Uri url = Uri.parse('https://www.instagram.com/profpts/');
                         if (!await launchUrl(url)) {
-                          print("cant open");
+                          //print("cant open");
                         }
                       },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
                       SizedBox(width: 5,),
                       FloatingActionButton(onPressed: () async {
                         final Uri url = Uri.parse('https://t.me/ptschemistryclass');
                         if (!await launchUrl(url)) {
-                          print("cant open");
+                          //print("cant open");
                         }
                       },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/telegram.png"),),
                     ],
                   ),),
                   Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
                     // This removes the hover effect
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.hovered)) {
+                    overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.hovered)) {
                           return Colors.transparent;
                         }
                         return null; // Defer to the widget's default.
@@ -205,9 +205,9 @@ class AboutPage extends StatelessWidget {
 
                   Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'),style: ButtonStyle(
                     // This removes the hover effect
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.hovered)) {
+                    overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.hovered)) {
                           return Colors.transparent;
                         }
                         return null; // Defer to the widget's default.
@@ -240,7 +240,7 @@ class AboutPage extends StatelessWidget {
                         FloatingActionButton(onPressed: () async {
                           final Uri url = Uri.parse('https://www.youtube.com/@SrinivasanPT');
                           if (!await launchUrl(url)) {
-                            print("cant open");
+                            //print("cant open");
                           }
                         }
                             ,elevation: 0, hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent,child: Image.asset("images/youtube.png")),
@@ -248,37 +248,37 @@ class AboutPage extends StatelessWidget {
                         FloatingActionButton(onPressed: () async {
                           final Uri url = Uri.parse('https://api.whatsapp.com/send/?phone=917448961696&text&type=phone_number&app_absent=0');
                           if (!await launchUrl(url)) {
-                            print("cant open");
+                            //print("cant open");
                           }
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent ,child: Image.asset("images/whatsapp.png")),
                         SizedBox(width: 5,),
                         FloatingActionButton(onPressed: () async {
                           final Uri url = Uri.parse('https://www.facebook.com/PaadhoorThiruvengadachariSrinivasan/');
                           if (!await launchUrl(url)) {
-                            print("cant open");
+                            //print("cant open");
                           }
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/facebook.png")),
                         SizedBox(width: 5,),
                         FloatingActionButton(onPressed: () async {
                           final Uri url = Uri.parse('https://www.instagram.com/profpts/');
                           if (!await launchUrl(url)) {
-                            print("cant open");
+                            //print("cant open");
                           }
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/instagram.png"),),
                         SizedBox(width: 5,),
                         FloatingActionButton(onPressed: () async {
                           final Uri url = Uri.parse('https://t.me/ptschemistryclass');
                           if (!await launchUrl(url)) {
-                            print("cant open");
+                            //print("cant open");
                           }
                         },elevation: 0,hoverElevation: 10,splashColor: Colors.deepPurple,backgroundColor: Colors.transparent, child: Image.asset("images/telegram.png"),),
                       ],
                     ),),
                     Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/videos'),style: ButtonStyle(
                       // This removes the hover effect
-                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.hovered)) {
+                      overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.hovered)) {
                             return Colors.transparent;
                           }
                           return null; // Defer to the widget's default.
@@ -287,9 +287,9 @@ class AboutPage extends StatelessWidget {
                     ), child: Text("Check out my Lectures!",style: TextStyle(fontSize: 14,fontWeight: FontWeight.normal),)),),
                     Center(child: TextButton(onPressed: () => Navigator.pushNamed(context, '/contact'),style: ButtonStyle(
                       // This removes the hover effect
-                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.hovered)) {
+                      overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.hovered)) {
                             return Colors.transparent;
                           }
                           return null;
