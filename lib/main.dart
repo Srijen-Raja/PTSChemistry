@@ -9,6 +9,7 @@ import 'videos_page.dart';
 import 'material_page.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:ui' as ui;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

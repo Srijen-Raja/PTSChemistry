@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'main.dart'; // Import home_page.dart to get access to the shared content widgets.
+import 'dart:ui' as ui;
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

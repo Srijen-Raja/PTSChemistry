@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'home_page.dart';
+import 'dart:ui' as ui;
 import 'main.dart'; // Make sure this imports variables like appbgcol, bgcol, etc.
 
 class MaterialsPage extends StatefulWidget {

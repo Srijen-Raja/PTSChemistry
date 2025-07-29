@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:ptschemistryclass/course_data.dart' as course_data_lib;
-
+import 'dart:ui' as ui;
 import 'courses_page.dart';
 import 'main.dart';
 

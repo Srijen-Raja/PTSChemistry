@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'home_page.dart';
 import 'course_data.dart';
 import 'main.dart';
+import 'dart:ui' as ui;
 
 class CoursesPage extends StatelessWidget {
   final String title;
