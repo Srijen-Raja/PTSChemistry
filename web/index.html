@@ -1,61 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
+  <!-- Set base path for Flutter web deployment -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A Website for PTS Chemistry Class">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <!-- Main SEO meta tags -->
+  <title>PTS Chemistry Class – Best Chemistry Tuition for NEET & JEE | Online Coaching</title>
+  <meta name="description"
+        content="PTS Chemistry Class – Top-rated chemistry tuition for NEET, IIT JEE, CBSE, & competitive exams. Expert chemistry tutor. Online coaching with study materials, video lectures, practice tests, and student reviews. Join the best chemistry tuition in India.">
+  <meta name="keywords"
+        content="PTS Chemistry Class,PTS,PTS Chemistry,chemistry class, chemistry tuition, chemistry coaching, NEET chemistry, IIT JEE chemistry, CBSE chemistry, online chemistry tutor, chemistry teacher, best chemistry tuition, chemistry study material, video lectures, organic chemistry, physical chemistry, inorganic chemistry, chemistry notes, classes, coaching center, top tutor, Kota, India, student reviews, practice tests, PTS Chemistry, PTS Chemistry Class, join chemistry tuition">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ptschemistryclass.vercel.app/">
+  <!-- Robot and language -->
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="en">
+
+  <!-- Open Graph for Facebook/Whatsapp -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="PTS Chemistry Class – Best Chemistry Tuition for NEET & IIT JEE">
+  <meta property="og:description"
+        content="Join PTS Chemistry Class for expert tuition. NEET, JEE & CBSE chemistry coaching. Study materials, video lectures, and top student results.">
+  <meta property="og:url" content="https://ptschemistryclass.vercel.app/">
+  <meta property="og:site_name" content="PTS Chemistry Class">
+  <meta property="og:image" content="https://ptschemistryclass.vercel.app/icons/Icon-192.png">
+
+  <!-- Twitter Card for sharing -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PTS Chemistry Class – Best Chemistry Tuition for NEET & IIT JEE">
+  <meta name="twitter:description"
+        content="Top-rated Chemistry coaching for NEET, JEE, CBSE. Join PTS Chemistry Class today!">
+  <meta name="twitter:image" content="https://ptschemistryclass.vercel.app/icons/Icon-192.png">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ptschemistryclass">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="PTS Chemistry Class">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png" alt="PTS Chemistry Class App Icon">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" alt="PTS Chemistry Class Favicon"/>
 
-  <title>ptschemistryclass</title>
+  <!-- Manifest & PWA -->
   <link rel="manifest" href="manifest.json">
+
+  <!-- Structured Data (Organization/FAQ for rich snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PTS Chemistry Class",
+    "url": "https://ptschemistryclass.vercel.app",
+    "logo": "https://ptschemistryclass.vercel.app/icons/Icon-192.png",
+    "sameAs": [
+      "https://ptschemistryclass.vercel.app/",
+    ],
+    "description": "Expert Chemistry tuition for NEET, IIT JEE, CBSE. Online and offline classes with video lectures, study material, practice tests and more."
+  }
+  </script>
+  <!-- Optionally include FAQPage schema for extra SEO, if relevant -->
+  <!--
+  <script type="application/ld+json">
+  {
+     "@context": "https://schema.org",
+     "@type": "FAQPage",
+     "mainEntity": [{
+       "@type": "Question",
+       "name": "What is PTS Chemistry Class?",
+       "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "PTS Chemistry Class provides expert chemistry tuition for NEET, JEE, CBSE and other competitive exams with online and classroom options."
+       }
+     }, {
+       "@type": "Question",
+       "name": "How can I join the PTS Chemistry Class?",
+       "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visit our website and contact us through the contact page or join directly online."
+       }
+     }]
+  }
+  </script>
+  -->
+
 </head>
 <body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCEDRzYuy57UTZrN0NQle1X7z1zUZuLjgU",
-    authDomain: "ptschemistrydata.firebaseapp.com",
-    projectId: "ptschemistrydata",
-    storageBucket: "ptschemistrydata.firebasestorage.app",
-    messagingSenderId: "491987706023",
-    appId: "1:491987706023:web:fd1b75007752aba7453b82",
-    measurementId: "G-D7T7J3NCNC"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+  <!-- UI rendered by Flutter web -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEDRzYuy57UTZrN0NQle1X7z1zUZuLjgU",
+      authDomain: "ptschemistrydata.firebaseapp.com",
+      projectId: "ptschemistrydata",
+      storageBucket: "ptschemistrydata.firebasestorage.app",
+      messagingSenderId: "491987706023",
+      appId: "1:491987706023:web:fd1b75007752aba7453b82",
+      measurementId: "G-D7T7J3NCNC"
+    };
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
