@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'main.dart'; // Import home_page.dart to get access to the shared content widgets.
@@ -33,7 +36,8 @@ class LoginPage extends StatelessWidget {
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
-          SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
+          if(kIsWeb || !Platform.isAndroid)
+            SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
           const SizedBox(width: 5),
           const Text('Login', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ]),

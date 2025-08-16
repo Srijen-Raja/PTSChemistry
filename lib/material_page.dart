@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -64,6 +66,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
+          if(kIsWeb || !Platform.isAndroid)
           SizedBox(
             height: 70,
             width: 70,

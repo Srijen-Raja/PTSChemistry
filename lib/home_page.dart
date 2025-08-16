@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:ptschemistryclass/course_data.dart' as course_data_lib;
@@ -61,6 +64,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 1.0,
         toolbarHeight: 70,
         title: Row(children: [
+          if(kIsWeb || !Platform.isAndroid)
           SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
           const SizedBox(width: 5),
           const Text('PTS Chemistry Class', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
