@@ -45,7 +45,7 @@ class ContactPage extends StatelessWidget {
           if(kIsWeb || !Platform.isAndroid)
             SizedBox(height: 70, width: 70, child: IconButton(onPressed: () => Navigator.pushNamed(context, '/'), icon: Image.asset("images/icon1.png"))),
           const SizedBox(width: 5),
-          const Text('Contact Me', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          const Text('Contact Me ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ]),
         actions: (hei<wid*0.9)?<Widget>[
           TextButton(
