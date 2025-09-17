@@ -187,6 +187,7 @@ class _HomePageState extends State<HomePage> {
 
 // Carousel Images
 final List<String> imgList = [
+  'images/course.jpg',
   'images/Screenshot 2025-07-25 201433.png',
   'images/pts2.jpg',
   'images/Screenshot 2025-07-25 201618.png',
