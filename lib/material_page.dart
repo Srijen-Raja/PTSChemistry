@@ -40,7 +40,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Choose an Test'),
+          title: Text('Choose a Test'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
