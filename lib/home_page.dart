@@ -520,6 +520,36 @@ class CoursesPageContent extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(width: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 2.0,
+              ),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical : 6),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.cyanAccent,
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/videos');
+                  },
+                  child: Text(
+                    "Check out my Lectures",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 20),
@@ -561,7 +591,7 @@ class CoursesPageContent extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 2.0),
               child: Text(
-                'Why PTS?',
+                'PTS Chemistry Class',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
             ),
@@ -576,17 +606,17 @@ class CoursesPageContent extends StatelessWidget {
             CourseCard(
               title: 'Expert & Passionate Instructor',
               description:
-                  'Learn from an experienced educator with a Master\'s in Chemistry, dedicated to making complex topics clear and accessible for every student.',
+                  'Learn from an experienced educator with a Doctoral degree, dedicated to making complex topics clear and accessible for every student.',
             ),
             CourseCard(
               title: 'Personalized Attention',
               description:
-                  'Our small group sessions ensure that every student gets individual attention. Ask questions freely and learn at a pace that is comfortable for you.',
+                  'My one on one sessions ensure that students gets individual attention. Ask questions freely and learn at a pace that is comfortable.',
             ),
             CourseCard(
               title: 'Achieve Academic Excellence',
               description:
-                  'Join a community of successful students. Our methods are proven to boost grades, improve test scores, and build lasting confidence in chemistry.',
+                  'Join a community of successful students. My methods are proven to boost grades, improve test scores, and build lasting confidence in chemistry.',
             ),
             CourseCard(
               title: 'Go Beyond the Textbook',
@@ -596,7 +626,7 @@ class CoursesPageContent extends StatelessWidget {
             CourseCard(
               title: 'Comprehensive Exam Preparation',
               description:
-                  'Get fully prepared for school exams, standardized tests (SAT/ACT), and AP Chemistry with targeted strategies and extensive practice materials.',
+                  'Get fully prepared for school exams, standardized tests (SAT/ACT/IGCSE/Cambridge/Australian Boards), and AP Chemistry with targeted strategies and extensive practice materials.',
             ),
             CourseCard(
               title: 'Build a Strong Foundation for the Future',
@@ -606,20 +636,20 @@ class CoursesPageContent extends StatelessWidget {
           ],
         ),
         SizedBox(height: 25),
-        Wrap(
-          alignment: WrapAlignment.center,
-          children: [
-            TextButton(
-              child: const Text(
-                'Check out My Lectures',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/videos');
-              },
-            ),
-          ],
-        ),
+        // Wrap(
+        //   alignment: WrapAlignment.center,
+        //   children: [
+        //     TextButton(
+        //       child: const Text(
+        //         'Check out My Lectures',
+        //         style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        //       ),
+        //       onPressed: () {
+        //         Navigator.pushNamed(context, '/videos');
+        //       },
+        //     ),
+        //   ],
+        // ),
         SizedBox(height: 30),
       ],
     );

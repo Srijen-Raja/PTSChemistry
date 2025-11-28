@@ -14,12 +14,12 @@ class Course {
 
 List<Course> courseData = [
     Course(
-      title: 'Grade 9: Foundations of Chemistry',
+      title: 'Grade 9: Foundations of Chemistry, NCERT IGCSE',
       description: 'An introduction to the fundamental concepts of matter, atomic structure, the periodic table, and basic chemical bonding.',
       chaps: {"" : []}
     ),
     Course(
-      title: 'Grade 10: Chemical Reactions & Stoichiometry',
+      title: 'Grade 10: Chemical Reactions & Stoichiometry, NCERT IGCSE',
       description: 'Explore different types of chemical reactions, learn to balance equations, and master the calculations of chemical quantities.',
 chaps: {"Acids Bases and Salts" : [
   "Acids, Bases and Salts - Basics	\nhttps://www.youtube.com/watch?v=e7UYVUH0BTg&list=PLiXvw2G9IEJDgM0__yRmhtTWGCtZfTr5Z&index=1",],
