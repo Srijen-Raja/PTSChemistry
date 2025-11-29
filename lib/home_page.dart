@@ -550,6 +550,42 @@ class CoursesPageContent extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(width: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 2.0,
+              ),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical : 6),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.cyanAccent,
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: TextButton(
+                  onPressed: () async {
+                    final Uri url = Uri.parse(
+                      'https://play.google.com/store/apps/details?id=com.ptschemistryclass.ptschemistryclass&hl=en',
+                    );
+                    if (!await launchUrl(url)) {
+                      //print("cant open");
+                    }
+                    ;
+                  },
+                  child: Text(
+                    "Install App",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 20),
