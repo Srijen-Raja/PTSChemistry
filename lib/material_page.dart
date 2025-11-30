@@ -590,6 +590,33 @@ class _MaterialsPageState extends State<MaterialsPage> {
               style: TextStyle(fontSize: 20, color: Colors.blue),
             ),
           ),
+          SizedBox(height: 10,),
+          Text("  JEE Crash Course", style: TextStyle(fontSize: 22, color: Colors.black87),),
+          TextButton(
+            onPressed: () async {
+              final Uri url = Uri.parse(
+                'https://drive.google.com/drive/folders/1hDEhDebtuMyRCuSc2rJEdQuQDqPj-5EH?usp=sharing',
+              );
+              if (!await launchUrl(url)) {
+                //print("cant open");
+              }
+              ;
+            },
+            child: Text(
+              "Crash Course Materials",
+              style: TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+          ),
+
+          TextButton(
+            onPressed: () async {
+              _showOptionsDialog(context, options);
+            },
+            child: Text(
+              "Crash Course Tests",
+              style: TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+          ),
           const SizedBox(height: 20),
           const Divider(color: Colors.black, thickness: 1),
           const SizedBox(height: 20),
