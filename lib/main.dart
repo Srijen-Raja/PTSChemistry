@@ -39,7 +39,7 @@ class TutorWebsite extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/reviews': (context) => const ReviewsPage(),
-        '/about': (context) => const AboutPage(),
+        '/about': (context) => AboutPage(),
         '/contact': (context) => const ContactPage(),
         '/login': (context) => const LoginPage(),
         '/videos': (context) => const VideosPage(),
