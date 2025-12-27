@@ -70,11 +70,11 @@ class _ReviewsPageState extends State<ReviewsPage> {
             style: navLinkStyle,
             child: const Text('Home'),
           ),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/material'),
-            style: navLinkStyle,
-            child: const Text('Study Material / Tests'),
-          ),
+          // TextButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/material'),
+          //   style: navLinkStyle,
+          //   child: const Text('Study Material / Tests'),
+          // ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/reviews'),
             style: navLinkStyle,
@@ -137,11 +137,11 @@ class _ReviewsPageState extends State<ReviewsPage> {
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
             ),
-            ListTile(
-              leading: const Icon(Icons.book_outlined),
-              title: const Text('Study Materials'),
-              onTap: () => Navigator.pushNamed(context, '/material'),
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.book_outlined),
+            //   title: const Text('Study Materials'),
+            //   onTap: () => Navigator.pushNamed(context, '/material'),
+            // ),
             ListTile(
               leading: const Icon(Icons.reviews_outlined),
               title: const Text('Reviews'),

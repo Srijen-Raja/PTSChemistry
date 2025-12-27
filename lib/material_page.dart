@@ -35,7 +35,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
     super.dispose();
   }
 
-  void _showOptionsDialog(BuildContext context, List<OptionWithLink> options) {
+  void showOptionsDialog(BuildContext context, List<OptionWithLink> options) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -109,15 +109,15 @@ class _MaterialsPageState extends State<MaterialsPage> {
                 ),
               ),
             const SizedBox(width: 5),
-            (kIsWeb)
-                ? Text(
-                  'Study Materials & Tests',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                )
-                : Text(
-                  "Study Materials",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
+            // (kIsWeb)
+            //     ? Text(
+            //       'Study Materials & Tests',
+            //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            //     )
+            //     : Text(
+            //       "Study Materials",
+            //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            //     ),
           ],
         ),
         actions:
@@ -194,11 +194,11 @@ class _MaterialsPageState extends State<MaterialsPage> {
                       title: const Text('Home'),
                       onTap: () => Navigator.pushNamed(context, '/'),
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.book_outlined),
-                      title: const Text('Study Materials'),
-                      onTap: () => Navigator.pushNamed(context, '/material'),
-                    ),
+                    // ListTile(
+                    //   leading: const Icon(Icons.book_outlined),
+                    //   title: const Text('Study Materials'),
+                    //   onTap: () => Navigator.pushNamed(context, '/material'),
+                    // ),
                     ListTile(
                       leading: const Icon(Icons.reviews_outlined),
                       title: const Text('Reviews'),
@@ -392,7 +392,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
 
             TextButton(
               onPressed: () async {
-                _showOptionsDialog(context, options);
+                showOptionsDialog(context, options);
               },
               child: Text(
                 "Crash Course Tests",
@@ -610,7 +610,7 @@ class _MaterialsPageState extends State<MaterialsPage> {
 
           TextButton(
             onPressed: () async {
-              _showOptionsDialog(context, options);
+              showOptionsDialog(context, options);
             },
             child: Text(
               "Crash Course Tests",

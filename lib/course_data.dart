@@ -13,6 +13,21 @@ class Course {
 }
 
 List<Course> courseData = [
+  Course(
+      title: 'JEE/NEET Preparation Videos',
+      description: 'Gain knowledge and tricks for competitive exams.',
+      chaps: {"JEE/NEET Preparation" : [
+        "Hyperconjugation Effect - GOC	\nhttps://www.youtube.com/watch?v=5TzVm7jMjBo&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=30"
+            "Types Of Reagents	\nhttps://www.youtube.com/watch?v=Eyr6XAeN_-Y&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=31"
+            "Inductive Effect	\nhttps://www.youtube.com/watch?v=ILwYoa0UVy8&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=32"
+            "Carbocations	\nhttps://www.youtube.com/watch?v=tfVYEAEFjTo&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=33"
+            "Carbanions	\nhttps://www.youtube.com/watch?v=ZpmASia-MFc&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=34"
+            "Substitution Reactions	\nhttps://www.youtube.com/watch?v=8eJQMroYJ5k&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=35"
+            "Freeradicals	\nhttps://www.youtube.com/watch?v=a6pYzpJS2xU&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=36"
+            "Addition Reactions	\nhttps://www.youtube.com/watch?v=0zxgOWhfI6M&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=37"
+
+      ]}
+  ),
     Course(
       title: 'Grade 9: Foundations of Chemistry, NCERT IGCSE',
       description: 'An introduction to the fundamental concepts of matter, atomic structure, the periodic table, and basic chemical bonding.',
@@ -113,20 +128,5 @@ chaps: {"Halo Alkanes and Halo Arenes" : [
          "Addition Reactions	\nhttps://www.youtube.com/watch?v=0zxgOWhfI6M&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=37\n"
 
    ]}
-    ),
-    Course(
-      title: 'JEE/NEET Preparation',
-      description: 'Gain knowledge and tricks for competitive exams.',
-      chaps: {"JEE/NEET Preparation" : [
-        "Hyperconjugation Effect - GOC	\nhttps://www.youtube.com/watch?v=5TzVm7jMjBo&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=30"
-        "Types Of Reagents	\nhttps://www.youtube.com/watch?v=Eyr6XAeN_-Y&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=31"
-        "Inductive Effect	\nhttps://www.youtube.com/watch?v=ILwYoa0UVy8&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=32"
-        "Carbocations	\nhttps://www.youtube.com/watch?v=tfVYEAEFjTo&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=33"
-        "Carbanions	\nhttps://www.youtube.com/watch?v=ZpmASia-MFc&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=34"
-        "Substitution Reactions	\nhttps://www.youtube.com/watch?v=8eJQMroYJ5k&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=35"
-        "Freeradicals	\nhttps://www.youtube.com/watch?v=a6pYzpJS2xU&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=36"
-        "Addition Reactions	\nhttps://www.youtube.com/watch?v=0zxgOWhfI6M&list=PLiXvw2G9IEJCHONHPEdT5Df5N-EDHL4IG&index=37"
-
-      ]}
     ),
 ];

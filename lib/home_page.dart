@@ -92,11 +92,11 @@ class _HomePageState extends State<HomePage> {
                     style: navLinkStyle,
                     child: const Text('Courses'),
                   ),
-                  TextButton(
-                    onPressed: () => Navigator.pushNamed(context, '/material'),
-                    style: navLinkStyle,
-                    child: const Text('Study Material / Tests'),
-                  ),
+                  // TextButton(
+                  //   onPressed: () => Navigator.pushNamed(context, '/material'),
+                  //   style: navLinkStyle,
+                  //   child: const Text('Study Material / Tests'),
+                  // ),
                   TextButton(
                     onPressed: () => Navigator.pushNamed(context, '/reviews'),
                     style: navLinkStyle,
@@ -160,11 +160,11 @@ class _HomePageState extends State<HomePage> {
                       title: const Text('Home'),
                       onTap: () => Navigator.pushNamed(context, '/'),
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.book_outlined),
-                      title: const Text('Study Materials'),
-                      onTap: () => Navigator.pushNamed(context, '/material'),
-                    ),
+                    // ListTile(
+                    //   leading: const Icon(Icons.book_outlined),
+                    //   title: const Text('Study Materials'),
+                    //   onTap: () => Navigator.pushNamed(context, '/material'),
+                    // ),
                     ListTile(
                       leading: const Icon(Icons.home_outlined),
                       title: const Text('Courses'),

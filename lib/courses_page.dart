@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'Options.dart';
 import 'home_page.dart';
 import 'course_data.dart';
 import 'main.dart';
@@ -12,6 +13,37 @@ class CoursesPage extends StatelessWidget {
   final String title;
   CoursesPage({super.key, required this.title});
 
+
+  void showOptionsDialog(BuildContext context, List<OptionWithLink> options) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Choose a Test'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: options.map((optionWithLink) {
+                return TextButton(
+                  onPressed: () async{
+                    Navigator.of(context).pop();
+                    final Uri url = Uri.parse(
+                      optionWithLink.link,
+                    );
+                    if (!await launchUrl(url)) {
+                      //print("cant open");
+                    }
+                    ;
+                  },
+                  child: Text(optionWithLink.option),
+                );
+              }).toList(),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +90,11 @@ class CoursesPage extends StatelessWidget {
           style: navLinkStyle,
           child: const Text('Home'),
         ),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/material'),
-            style: navLinkStyle,
-            child: const Text('Study Material / Tests'),
-          ),
+          // TextButton(
+          //   onPressed: () => Navigator.pushNamed(context, '/material'),
+          //   style: navLinkStyle,
+          //   child: const Text('Study Material / Tests'),
+          // ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/reviews'),
             style: navLinkStyle,
@@ -120,11 +152,11 @@ class CoursesPage extends StatelessWidget {
               title: const Text('Home'),
               onTap: () => Navigator.pushNamed(context, '/'),
             ),
-            ListTile(
-              leading: const Icon(Icons.book_outlined),
-              title: const Text('Study Materials'),
-              onTap: () => Navigator.pushNamed(context, '/material'),
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.book_outlined),
+            //   title: const Text('Study Materials'),
+            //   onTap: () => Navigator.pushNamed(context, '/material'),
+            // ),
             ListTile(
               leading: const Icon(Icons.reviews_outlined),
               title: const Text('Reviews'),
@@ -200,6 +232,50 @@ class CoursesPage extends StatelessWidget {
     child: Text("No chapters found for this course."),
     ),
     SizedBox(height: 15,),
+        if(course.title =="JEE/NEET Preparation Videos")
+          Column(children: [
+          TextButton(
+            onPressed: () async {
+              final Uri url = Uri.parse(
+                'https://drive.google.com/file/d/1vx57Qw7u-wb3HxSwW5-By5YprDX8HlJG/view?usp=sharing',
+              );
+              if (!await launchUrl(url)) {
+                //print("cant open");
+              }
+              ;
+            },
+            child: Text(
+              "JEE Free Material",
+              style: TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+          ),
+        SizedBox(height: 10,),
+        Text("  JEE Crash Course", style: TextStyle(fontSize: 22, color: Colors.black87),),
+        TextButton(
+          onPressed: () async {
+            final Uri url = Uri.parse(
+              'https://drive.google.com/drive/folders/1hDEhDebtuMyRCuSc2rJEdQuQDqPj-5EH?usp=sharing',
+            );
+            if (!await launchUrl(url)) {
+              //print("cant open");
+            }
+            ;
+          },
+          child: Text(
+            "Crash Course Materials",
+            style: TextStyle(fontSize: 20, color: Colors.blue),
+          ),
+        ),
+
+        TextButton(
+          onPressed: () async {
+            showOptionsDialog(context, options);
+          },
+          child: Text(
+            "Crash Course Tests",
+            style: TextStyle(fontSize: 20, color: Colors.blue),
+          ),
+        ),],)
       ]),),
     );
   }
