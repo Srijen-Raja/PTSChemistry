@@ -35,7 +35,7 @@ List<OptionWithLink> options = [
   OptionWithLink('Day 26: Environmental Chemistry', 'https://forms.office.com/r/Fqh2Zpt7su?origin=lprLink'),
   OptionWithLink('Day 27: General Organic Chemistry', 'https://forms.office.com/r/BSbrafK3Gg?origin=lprLink'),
    OptionWithLink('Day 28: Hydrocarbons', 'https://forms.office.com/r/Rn5iMdgbjk?origin=lprLink'),
-  //OptionWithLink('Day 29: Organic Compounds Containing Halogens', 'https://forms.office.com/r/Rn5iMdgbjk?origin=lprLink'),
+  OptionWithLink('Day 29: Organic Compounds Containing Halogens', 'https://forms.office.com/r/UZudLassx7?origin=lprLink'),
   // OptionWithLink('Day 30: Organic Compounds Containing Oxygen', 'https://ptschemistryclass.vercel.app/'),
   // OptionWithLink('Day 31: Organic Compounds Containing Nitrogen', 'https://ptschemistryclass.vercel.app/'),
   // OptionWithLink('Day 32: Unit Test 5 (Organic Chemistry-I)', 'https://ptschemistryclass.vercel.app/'),
